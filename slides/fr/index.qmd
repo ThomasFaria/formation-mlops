@@ -78,14 +78,10 @@ from: markdown+emoji
 
 {{< include sections/5b-ml-in-production.qmd >}}
 
-{{< include sections/5c-ml-in-production.qmd >}}
-
 ## Application 5 {.scrollable}
 
 {{< include applications/_application5c.qmd >}}
 
-# :six: Défis organisationnels du MLOps
-
 # Conclusion
 
-{{< include sections/7-conclusion.qmd >}}
+{{< include sections/6-conclusion.qmd >}}

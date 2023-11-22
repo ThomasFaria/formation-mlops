@@ -2,7 +2,7 @@
 :::: {.callout-tip collapse="true" icon=false}
 ## Partie 1 : Requêter votre modèle déployé
 
-1. Créez un fichier `predict-api.py`. Ce script doit : 
+1. Créez un fichier `predict_api.py`. Ce script doit : 
     - Lire le fichier parquet disponible à l'adresse suivante :
 
     ```shell
@@ -17,7 +17,7 @@
     <font size=\"3\" color=\"darkgreen\"><b>Cliquez pour voir le contenu du script </b></font> 
 </summary>
 
-```{.python filename="predict-api.py"}
+```{.python filename="predict_api.py"}
 import pandas as pd
 import requests
 
@@ -36,7 +36,7 @@ data_path = "https://minio.lab.sspcloud.fr/projet-formation/diffusion/mlops/data
 df = pd.read_parquet(data_path)
 
 # Votre API URL
-api_url = "<your_firstname>-<your_lastname>-api.lab.sspcloud.fr/predict"
+api_url = "https://<your_firstname>-<your_lastname>-api.lab.sspcloud.fr/predict"
 
 # Effectue les requêtes
 responses = df["text"].apply(lambda x: make_prediction(api_url, x))
@@ -49,7 +49,7 @@ print(pd.merge(df, pd.json_normalize(responses),
 ```
 </details>
 
-2. Exécutez votre script `predict-api.py`.
+2. Exécutez votre script `predict_api.py`.
 
 <details> 
 <summary> 
@@ -57,7 +57,7 @@ print(pd.merge(df, pd.json_normalize(responses),
 </summary>
 
 ```shell
-python formation-mlops/src/predict-api.py
+python formation-mlops/src/predict_api.py
 ```
 </details>
 
@@ -66,4 +66,11 @@ python formation-mlops/src/predict-api.py
 4. Quelles informations détenez-vous ? Est-ce suffisant ?
 
 ::::
+
+:::: {.callout-important collapse="true"}
+
+Nous avons ici réalisé une succession de requêtes GET car nous avons un seul point d'entrée vers notre API. Pour réaliser des requêtes en `batch` il est préférable de réaliser des requêtes POST.
+
+::::
+
 :::
